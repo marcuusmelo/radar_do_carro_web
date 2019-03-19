@@ -6,7 +6,7 @@ from radar_do_carro_main.models import CarAdTest
 from radar_do_carro_main.tables import CarAdTestTable
 
 
-def index(request):
+def dashboard(request):
     """
     Experiment -- this will eventually be the table page for radar do carro
     Objectives:

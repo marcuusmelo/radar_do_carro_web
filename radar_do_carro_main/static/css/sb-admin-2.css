@@ -9734,8 +9734,6 @@ footer.sticky-footer {
 }
 @media (min-width: 700px) {
     footer.sticky-footer{
-        position: fixed;
-        bottom: 0;
         width: 100%;
     }
 }
