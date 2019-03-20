@@ -1,21 +1,40 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
 from django_tables2 import RequestConfig
+from django.contrib.auth.decorators import login_required
 
 from radar_do_carro_main.models import CarAdTest
 from radar_do_carro_main.tables import CarAdTestTable
 
+from django.contrib.auth import logout
+
 from .filters import CarAdTestFilter
 
 
+def index(request):
+    return render(request, 'radar_do_carro_main/404.html')
+
+@login_required(login_url='/login/')
+def logout_view(request):
+    logout(request)
+    return redirect('index')
+
+@login_required(login_url='/login/')
 def dashboard(request, marca_modelo='todos'):
     """  """
+    categorias_disponiveis = [
+        'todos', 'mais_vendidos', 'seda_compacto', 'seda_medio', 'suv'
+    ]
     modelos_disponiveis = [
-        'todos', 'mais_vendidos', 'seda_compacto', 'seda_medio', 'suv', 'hb20', 'onix',
-        'gol', 'up', 'kwid', 'ka', 'prisma', 'virtus', 'ka_seda', 'voyage'
+        'cobalt', 'cruze_sedan', 'onix', 'prisma', 's10', 'spin', 'tracker', 'argo', 'cronos',
+        'mobi', 'siena', 'strada', 'toro', 'uno', 'ecosport', 'fiesta', 'focus', 'fusion', 'ka',
+        'ka_sedan', 'ranger', 'city', 'civic', 'fit', 'hr-v', 'wr-v', 'creta', 'hb20', 'hb20s',
+        'compass', 'renegade', 'kicks', 'versa', 'captur', 'duster', 'kwid', 'logan', 'sandero',
+        'corolla', 'etios_hatch', 'etios_sedan', 'hilux', 'yaris_hatch', 'yaris_sedan', 'amarok',
+        'fox', 'gol', 'golf', 'jetta', 'polo', 'saveiro', 'up', 'virtus', 'voyage'
     ]
 
-    if marca_modelo not in modelos_disponiveis:
+    if marca_modelo not in modelos_disponiveis+categorias_disponiveis:
         return render(request, 'radar_do_carro_main/404.html')
 
     car_ads_qs = CarAdTest.objects.all()

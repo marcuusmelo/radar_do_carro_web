@@ -1,49 +1,181 @@
 {% load static %}
+{% load render_table from django_tables2 %}
+{% load bootstrap3 %}
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.0/css/bootstrap.min.css" />
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    {% block head %}
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
     <title>Radar do Carro</title>
+    <link rel="icon" href="{% static 'img/car3_white_bg_black.png' %}">
+
+    <!-- Custom fonts for this template -->
+    <link href="{%static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{%static 'css/sb-admin-2.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this page -->
+    <link href="{%static 'vendor/datatables/dataTables.bootstrap4.min.css' %}" rel="stylesheet">
+
+    {% block head %}
     {% endblock %}
+
 </head>
-<body>
-    <!-- Static navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <img src="http://placehold.it/150x50?text=Logo" alt="">
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Home
-                            <span class="sr-only">(current)</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
-                    </li>
-                </ul>
+
+<body id="page-top bg-black">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+        <!-- paste sidebar code here -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column bg-white">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-dark bg-black topbar mb-4 static-top shadow">
+
+                    <a class="navbar-brand text-light" href="/">
+                        <img src="{% static 'img/car3_white.png' %}" width="65" height="50">
+                        Radar do Carro
+                    </a>
+                    <button class="navbar-toggler text-white" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="False" aria-label="Toggle navigation"></button>
+
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
+
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link" href="/dashboard">
+                                <span class="mr-2 d-none d-lg-inline text-light-600 small">Dashboard</span>
+                                <i class="fas fa-tachometer-alt fa-sm fa-fw mr-2 text-light"></i>
+                            </a>
+                        </li>
+
+                        <div class="topbar-divider d-none d-sm-block"></div>
+
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-light-600 small">User Name</span>
+                                <img class="img-profile rounded-circle" src="{% static 'img/dog.jpg' %}">
+                            </a>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="/perfil">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Perfil
+                                </a>
+                                <a class="dropdown-item" href="/configuracoes">
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Configurações
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/como_utilizar_o_radar_do_carro">
+                                    <i class="fas fa-book fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Como Utilizar o Radar do Carro
+                                </a>
+                                <a class="dropdown-item" href="/dicas_para_comprar_um_carro">
+                                    <i class="fas fa-lightbulb fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Dicas Para Comprar Um Carro
+                                </a>
+                                <a class="dropdown-item" href="/dicas_para_vender_um_carro">
+                                    <i class="fas fa-lightbulb fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Dicas Para Vender Um Carro
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/sobre" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-users fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Sobre o Radar do Carro
+                                </a>
+                                <a class="dropdown-item" href="/contato" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-phone fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Contato
+                                </a>
+                                <a class="dropdown-item" href="/FAQ" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-question-circle fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    FAQ
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/logout" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Logout
+                                </a>
+                            </div>
+                        </li>
+
+                    </ul>
+
+                </nav>
+                <!-- End of Topbar -->
+
+                {% block body %}
+                {% endblock %}
+
+            </div>
+            <!-- End of Main Content -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+        <!-- Footer -->
+        <footer class="sticky-footer bg-black text-light">
+            <div class="copyright text-center bg-gray-900">
+                Copyright &copy; 2019
+                <span>Radar do Carro</span>
+            </div>
+        </footer>
+        <!-- End of Footer -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Já Vai?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Clique no botão Logout abaixo para finalizar sua sessão.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                    <a class="btn btn-primary" href="/logout/">Logout</a>
+                </div>
             </div>
         </div>
-    </nav>
+    </div>
 
-    {% block body %}
-    {% endblock %}
+    <!-- Bootstrap core JavaScript-->
+    <script src="{%static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{%static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="{%static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="{%static 'js/sb-admin-2.min.js' %}"></script>
+
+    <!-- Page level plugins -->
+    <script src="{%static 'vendor/datatables/jquery.dataTables.min.js' %}"></script>
+    <script src="{%static 'vendor/datatables/dataTables.bootstrap4.min.js' %}"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="{%static 'js/demo/datatables-demo.js' %}"></script>
 
 </body>
+
 </html>
