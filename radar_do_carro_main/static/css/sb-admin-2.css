@@ -8733,8 +8733,17 @@ a:focus {
     -ms-flex-pack: center;
     justify-content: center;
 }
+.border-top-primary {
+    border-top: .25rem solid #4e73df!important;
+}
+.border-bottom-primary {
+    border-bottom: .25rem solid #4e73df!important;
+}
 .border-left-primary {
     border-left: .25rem solid #4e73df!important;
+}
+.border-left-black {
+    border-left: .25rem solid #000000!important;
 }
 .border-left-success {
     border-left: .25rem solid #1cc88a!important;
