@@ -7,40 +7,31 @@ from radar_do_carro_main.tables import CarAdTestTable
 
 from .filters import CarAdTestFilter
 
-"""from django_filters.views import FilterView
-from django_tables2.views import SingleTableMixin
 
+def dashboard(request, marca_modelo='todos'):
+    """  """
+    modelos_disponiveis = [
+        'todos', 'mais_vendidos', 'seda_compacto', 'seda_medio', 'suv', 'hb20', 'onix',
+        'gol', 'up', 'kwid', 'ka', 'prisma', 'virtus', 'ka_seda', 'voyage'
+    ]
 
-class FilteredCarAdTest(SingleTableMixin, FilterView):
-    table_class = CarAdTestTable
-    model = CarAdTest
-    template_name = 'radar_do_carro_main/tables.html'
+    if marca_modelo not in modelos_disponiveis:
+        return render(request, 'radar_do_carro_main/404.html')
 
-    filterset_class = CarAdTestFilter"""
-
-def dashboard(request, page_type='todos'):
-    """Experiment -- this will eventually be the table page for radar do carro
-    Objectives:
-        1. [Y] Display a db table
-        2. [Y] Front end sort
-        3. [Y] Front end filter
-        4. [Y] Make it look pretty
-        5. [ ] Put real data in"""
     car_ads_qs = CarAdTest.objects.all()
 
-    if page_type == 'mais_vendidos':
+    if marca_modelo == 'todos':
         pass
-    elif page_type == 'seda_compacto':
+    elif marca_modelo == 'mais_vendidos':
         pass
-    elif page_type == 'seda_medio':
+    elif marca_modelo == 'seda_compacto':
         pass
-    elif page_type == 'suv':
+    elif marca_modelo == 'seda_medio':
         pass
-
-    if "modelo" in request.GET:
-        modelo = request.GET["modelo"]
-        if modelo != '':
-            car_ads_qs = car_ads_qs.filter(modelo__exact=modelo)
+    elif marca_modelo == 'suv':
+        pass
+    else:
+        pass
 
     if "ano_min" in request.GET:
         ano_min = request.GET["ano_min"]
@@ -76,9 +67,11 @@ def dashboard(request, page_type='todos'):
     table = CarAdTestTable(car_ads_qs)
     RequestConfig(request).configure(table)
 
-    page_type = page_type.replace('_', ' ').replace('seda', 'SEDÃ').upper()
+    marca_modelo = marca_modelo.replace('_', ' ').replace('seda', 'SEDÃ').upper()
 
-    return render(request, 'radar_do_carro_main/tables.html', {'table': table, 'page': page_type})
+    args = {
+        'table': table,
+        'page': marca_modelo
+    }
 
-    #f = CarAdTestFilter(request.GET, queryset=CarAdTest.objects.all())
-    #return render(request, 'radar_do_carro_main/tables.html', {'table': f})
+    return render(request, 'radar_do_carro_main/tables.html', args)
