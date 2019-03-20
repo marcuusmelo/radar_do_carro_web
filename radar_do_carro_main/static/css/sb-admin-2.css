@@ -450,6 +450,7 @@ pre code {
     padding-left: .75rem;
     margin-right: auto;
     margin-left: auto;
+    margin-bottom: 50px;
 }
 .row {
     display: -webkit-box;
@@ -1563,6 +1564,7 @@ pre code {
 .form-control {
     display: block;
     width: 100%;
+    min-width: 100px ;
     height: calc(1.5em + .75rem + 2px);
     padding: .375rem .75rem;
     font-size: 1rem;
