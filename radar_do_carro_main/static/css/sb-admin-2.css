@@ -2580,6 +2580,11 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
     border: 1px solid #e3e6f0;
     border-radius: .35rem;
 }
+.scrollable-menu {
+    height: auto;
+    max-height: 200px;
+    overflow-x: hidden;
+}
 .dropdown-menu-left {
     right: auto;
     left: 0;
