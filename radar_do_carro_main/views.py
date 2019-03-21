@@ -29,9 +29,9 @@ def dashboard(request, marca_modelo='todos'):
         'cobalt', 'cruze_sedan', 'onix', 'prisma', 's10', 'spin', 'tracker', 'argo', 'cronos',
         'mobi', 'siena', 'strada', 'toro', 'uno', 'ecosport', 'fiesta', 'focus', 'fusion', 'ka',
         'ka_sedan', 'ranger', 'city', 'civic', 'fit', 'hr-v', 'wr-v', 'creta', 'hb20', 'hb20s',
-        'compass', 'renegade', 'kicks', 'versa', 'captur', 'duster', 'kwid', 'logan', 'sandero',
-        'corolla', 'etios_hatch', 'etios_sedan', 'hilux', 'yaris_hatch', 'yaris_sedan', 'amarok',
-        'fox', 'gol', 'golf', 'jetta', 'polo', 'saveiro', 'up', 'virtus', 'voyage'
+        'compass', 'renegade', 'kicks', 'sentra', 'versa', 'captur', 'duster', 'kwid', 'logan', 
+        'sandero', 'corolla', 'etios_hatch', 'etios_sedan', 'hilux', 'yaris_hatch', 'yaris_sedan', 
+        'amarok', 'fox', 'gol', 'golf', 'jetta', 'polo', 'saveiro', 'up', 'virtus', 'voyage'
     ]
 
     if marca_modelo not in modelos_disponiveis+categorias_disponiveis:
