@@ -44,7 +44,7 @@
             <div id="content">
 
                 <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-dark bg-black topbar mb-4 static-top shadow">
+                <nav class="navbar navbar-expand navbar-dark bg-black topbar static-top shadow">
 
                     <a class="navbar-brand text-light" href="/">
                         <img src="{% static 'img/car3_white.png' %}" width="65" height="50">
@@ -68,12 +68,12 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-light-600 small">User Name</span>
-                                <img class="img-profile rounded-circle" src="{% static 'img/dog.jpg' %}">
+                                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="/perfil">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    <i class="fas fa-address-card fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Perfil
                                 </a>
                                 <a class="dropdown-item" href="/configuracoes">
@@ -128,6 +128,7 @@
         </div>
         <!-- End of Content Wrapper -->
 
+        {% block foot %}
         <!-- Footer -->
         <footer class="sticky-footer bg-black text-light fixed-bottom">
             <div class="copyright text-center bg-gray-900">
@@ -136,6 +137,7 @@
             </div>
         </footer>
         <!-- End of Footer -->
+        {% endblock %}
 
     </div>
     <!-- End of Page Wrapper -->

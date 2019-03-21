@@ -1,7 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load render_table from django_tables2 %}
+{% load bootstrap3 %}
 
-<form method="post">
-    {% csrf_token %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    {% block head %}
+    {% endblock %}
+</head>
+<body>
+    {% block body %}
+    <!-- Masthead -->
+    <header class="masthead text-white text-center">
+        <div class="overlay"></div>
+        <div class="container">
 
-    {{ form.as_p }}
-    <<button type="submit" name="button">Submit</button>
-</form>
+            <!-- Outer Row -->
+            <div class="row justify-content-center">
+
+                <div class="col-xl-10 col-lg-12 col-md-9">
+
+                    <div class="card o-hidden border-0 shadow-lg">
+                        <div class="card-body p-0">
+                            <!-- Nested Row within Card Body -->
+                            <div class="p-5">
+                                <div class="text-center">
+                                    <img src="{% static 'img/car3_black.png' %}" alt="" width="120" height="100"></img>
+                                    <h1 class="h4 text-gray-900 mb-2">Bem-Vindo(a) de Volta!</h1>
+                                </div>
+                                <form class="user text-center" method="post">
+                                    {% csrf_token %}
+                                    Faça seu login
+                                    <br> <br>
+                                    {% if form.errors %}
+                                    Falha no login
+                                    <br>
+                                    Por favor, insira nome de usuário e senha válidos.
+                                    <br> <br>
+                                    {% endif %}
+                                    <div class="container text-center">
+                                        <input class="form-control form-control-user mx-auto" type="text" name="username" placeholder="usuário" required oninvalid="this.setCustomValidity('Por favor, digite um nome de usuário')" oninput="setCustomValidity('')">
+                                        <br>
+                                        <input class="form-control form-control-user mx-auto" type="password" name="password" placeholder="senha" required oninvalid="this.setCustomValidity('Por favor, digite sua senha')" oninput="setCustomValidity('')">
+                                        <br> <br>
+                                    </div>
+
+                                    <div class="container">
+                                        <button class="btn bg-primary text-white">Entrar</button>
+                                    </div>
+                                    <div class="text-center mt-2 p-t-90">
+                                        <a href="recuperar_senha/">
+                                            Esqueceu a senha?
+                                        </a>
+                                    </div>
+                                </form>
+                                <hr>
+                                <div class="container text-center mt-2">
+                                    <a href="/criar_conta">
+                                        <button class="btn bg-secondary text-white">Criar Conta</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    {% endblock %}
+    {% block foot %}
+    {% endblock %}
+</body>
+</html>

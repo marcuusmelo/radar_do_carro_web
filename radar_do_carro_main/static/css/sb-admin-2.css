@@ -8489,6 +8489,18 @@ h2, h3 {
 body {
     min-width: 992px!important;
 }
+.bg-login {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-color: #343a40;
+    background: url("../img/architecture-automobile-cars-63294.jpg") no-repeat center center;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+}
 .container {
     min-width: 992px!important;
 }
@@ -8619,6 +8631,18 @@ a:focus {
     animation-duration: .2s;
     -webkit-animation-timing-function: opacity cubic-bezier(0, 1, .4, 1);
     animation-timing-function: opacity cubic-bezier(0, 1, .4, 1);
+}
+.bg-img-dashboard {
+    background: url("../img/automobile-fast-number-248747.jpg") no-repeat center center;
+    background-size: cover;
+}
+.bg-img-night {
+    background: url("../img/action-asphalt-back-light-315938.jpg") no-repeat center center;
+    background-size: cover;
+}
+.bg-img-garage {
+    background: url("../img/architecture-automobile-cars-63294.jpg") no-repeat center center;
+    background-size: cover;
 }
 .bg-gradient-primary {
     background-color: #4e73df;
@@ -9391,6 +9415,7 @@ form.user .custom-checkbox.small label {
     line-height: 1.5rem;
 }
 form.user .form-control-user {
+    width: 50%;
     font-size: .8rem;
     border-radius: 10rem;
     padding: 1.5rem 1rem;
@@ -9761,3 +9786,132 @@ footer.sticky-footer .copyright {
 }
 body.sidebar-toggled footer.sticky-footer {
     width: 100%}
+/*!
+ * Start Bootstrap - Landing Page v5.0.3 (https://startbootstrap.com/template-overviews/landing-page)
+ * Copyright 2013-2019 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-landing-page/blob/master/LICENSE)
+ */
+
+header.masthead {
+  position: relative;
+  background-color: #343a40;
+  background: url("../img/architecture-automobile-cars-63294.jpg") no-repeat center center;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+}
+
+header.masthead .overlay {
+  position: absolute;
+  background-color: #212529;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0.8;
+}
+
+header.masthead h1 {
+  font-size: 2rem;
+}
+
+@media (min-width: 768px) {
+  header.masthead {
+    padding-top: 12rem;
+    padding-bottom: 12rem;
+  }
+  header.masthead h1 {
+    font-size: 3rem;
+  }
+}
+
+.showcase .showcase-text {
+  padding: 3rem;
+}
+
+.showcase .showcase-img {
+  min-height: 30rem;
+  background-size: cover;
+}
+
+@media (min-width: 768px) {
+  .showcase .showcase-text {
+    padding: 7rem;
+  }
+}
+
+.features-icons {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.features-icons .features-icons-item {
+  max-width: 20rem;
+}
+
+.features-icons .features-icons-item .features-icons-icon {
+  height: 7rem;
+}
+
+.features-icons .features-icons-item .features-icons-icon i {
+  font-size: 4.5rem;
+}
+
+.features-icons .features-icons-item:hover .features-icons-icon i {
+  font-size: 5rem;
+}
+
+.testimonials {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.testimonials .testimonial-item {
+  max-width: 18rem;
+}
+
+.testimonials .testimonial-item img {
+  max-width: 12rem;
+  -webkit-box-shadow: 0px 5px 5px 0px #adb5bd;
+  box-shadow: 0px 5px 5px 0px #adb5bd;
+}
+
+.call-to-action {
+  position: relative;
+  background-color: #343a40;
+  background: url("../img/bg-masthead.jpg") no-repeat center center;
+  background-size: cover;
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+}
+
+.call-to-action .overlay {
+  position: absolute;
+  background-color: #212529;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0.3;
+}
+.wrap-separator {
+  width: 500px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.loginSignUpSeparator {
+    border-top:10px solid #cbd2d6;
+    position:relative;
+    margin:25px 0 10px;
+    text-align:center
+}
+
+.loginSignUpSeparator .textInSeparator {
+    padding:0 .5em;
+    position:center;
+    color:#6c7378;
+    top:-.7em
+}
