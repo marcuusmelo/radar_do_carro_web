@@ -12,7 +12,7 @@ from .filters import CarAdTestFilter
 
 
 def index(request):
-    return render(request, 'radar_do_carro_main/404.html')
+    return render(request, 'radar_do_carro_main/index.html')
 
 @login_required(login_url='/login/')
 def logout_view(request):
@@ -29,8 +29,8 @@ def dashboard(request, marca_modelo='todos'):
         'cobalt', 'cruze_sedan', 'onix', 'prisma', 's10', 'spin', 'tracker', 'argo', 'cronos',
         'mobi', 'siena', 'strada', 'toro', 'uno', 'ecosport', 'fiesta', 'focus', 'fusion', 'ka',
         'ka_sedan', 'ranger', 'city', 'civic', 'fit', 'hr-v', 'wr-v', 'creta', 'hb20', 'hb20s',
-        'compass', 'renegade', 'kicks', 'sentra', 'versa', 'captur', 'duster', 'kwid', 'logan', 
-        'sandero', 'corolla', 'etios_hatch', 'etios_sedan', 'hilux', 'yaris_hatch', 'yaris_sedan', 
+        'compass', 'renegade', 'kicks', 'sentra', 'versa', 'captur', 'duster', 'kwid', 'logan',
+        'sandero', 'corolla', 'etios_hatch', 'etios_sedan', 'hilux', 'yaris_hatch', 'yaris_sedan',
         'amarok', 'fox', 'gol', 'golf', 'jetta', 'polo', 'saveiro', 'up', 'virtus', 'voyage'
     ]
 

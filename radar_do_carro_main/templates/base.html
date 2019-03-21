@@ -44,7 +44,7 @@
             <div id="content">
 
                 <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-dark bg-black topbar mb-4 static-top shadow">
+                <nav class="navbar navbar-expand navbar-dark bg-black topbar static-top shadow">
 
                     <a class="navbar-brand text-light" href="/">
                         <img src="{% static 'img/car3_white.png' %}" width="65" height="50">
@@ -128,6 +128,7 @@
         </div>
         <!-- End of Content Wrapper -->
 
+        {% block foot %}
         <!-- Footer -->
         <footer class="sticky-footer bg-black text-light fixed-bottom">
             <div class="copyright text-center bg-gray-900">
@@ -136,6 +137,7 @@
             </div>
         </footer>
         <!-- End of Footer -->
+        {% endblock %}
 
     </div>
     <!-- End of Page Wrapper -->
