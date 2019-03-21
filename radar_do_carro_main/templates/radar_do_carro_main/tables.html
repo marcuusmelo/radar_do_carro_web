@@ -1,215 +1,320 @@
+{% extends 'base.html' %}
 {% load static %}
 {% load render_table from django_tables2 %}
+{% load bootstrap3 %}
 
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" dir="ltr">
 <head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Radar do Carro</title>
-    <link rel="icon" href="{% static 'img/car3_white_bg_black.png' %}">
-
-    <!-- Custom fonts for this template -->
-    <link href="{%static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="{%static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
-
-    <!-- Custom styles for this page -->
-    <link href="{%static 'vendor/datatables/dataTables.bootstrap4.min.css' %}" rel="stylesheet">
-
+    {% block head %}
+    {% endblock %}
 </head>
+<body>
+    {% block body %}
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
 
-<body id="page-top bg-black">
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-primary">Dashboard</h1>
 
-    <!-- Page Wrapper -->
-    <div id="wrapper">
-        <!-- paste sidebar code here -->
+        <br>
 
-        <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column bg-white">
-
-            <!-- Main Content -->
-            <div id="content">
-
-                <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-dark bg-gray-900 topbar mb-4 static-top shadow">
-
-                    <a class="navbar-brand text-light" href="#">
-                        <img src="{% static 'img/car3_white.png' %}" width="65" height="50">
-                        Radar do Carro
+        <!-- Content Row -->
+        <div class="row">
+            <!-- Cards de Busca Rápida -->
+            <!-- Link carros mais vedidos: https://revistaautoesporte.globo.com/Noticias/noticia/2019/01/top-50-os-carros-mais-vendidos-de-2018.html-->
+            <!-- Link carros mais vedidos por categoria: https://revistaautoesporte.globo.com/Noticias/noticia/2019/01/os-carros-mais-vendidos-de-2018.html-->
+            <div class="col mb-4">
+                <div class="box border-left-primary shadow h-100 py-2">
+                    <a href="/dashboard/mais_vendidos">
+                        <div class="box-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Onix, HB20, KA, Gol, Kwid</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">Mais Vendidos 2018</div>
+                                </div>
+                            </div>
+                        </div>
                     </a>
-                    <button class="navbar-toggler text-gray-600" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">A</button>
-
-                    <!-- Topbar Navbar -->
-                    <ul class="navbar-nav ml-auto">
-
-                        <div class="topbar-divider d-none d-sm-block"></div>
-
-                        <!-- Nav Item - User Information -->
-                        <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-light-600 small">User Name</span>
-                                <img class="img-profile rounded-circle" src="{% static 'img/dog.jpg' %}">
-                            </a>
-                            <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="/perfil">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Perfil
-                                </a>
-                                <a class="dropdown-item" href="/configuracoes">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Configurações
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="/logout" data-toggle="modal" data-target="#logoutModal">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Logout
-                                </a>
+                </div>
+            </div>
+            <div class="col mb-4">
+                <div class="box border-left-primary shadow h-100 py-2">
+                    <a href="/dashboard/seda_compacto">
+                        <div class="box-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Prisma, Virtus, Ka Sedã, Voyage, HB20S</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">Sedã Compacto</div>
+                                </div>
                             </div>
-                        </li>
-
-                    </ul>
-
-                </nav>
-                <!-- End of Topbar -->
-
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
-
-                    <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Carros no Seu Radar</h1>
-                    <p class="mb-4"><a target="_blank" href="https://datatables.net"></a>.</p>
-
-                    <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Carros no Seu Radar</h6>
                         </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <tbody>
-                                        {% render_table table %}
-                                    </tbody>
-                                </table>
+                    </a>
+                </div>
+            </div>
+            <div class="col mb-4">
+                <div class="box border-left-primary shadow h-100 py-2">
+                    <a href="/dashboard/seda_medio">
+                        <div class="box-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Corolla, Civic, Cruze, Sentra, Jetta</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">Sedã Médio</div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col mb-4">
+                <a href="/dashboard/suv">
+                    <div class="box border-left-primary shadow h-100 py-2">
+                        <div class="box-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Compass, Creta, HR-V, Kicks, Renegade</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">SUV</div>
+                                </div>
                             </div>
                         </div>
                     </div>
-
-                </div>
-                <!-- /.container-fluid -->
-
+                </a>
             </div>
-            <!-- End of Main Content -->
-
+            <div class="col mb-4">
+                <div class="box border-left-primary shadow h-100 py-2">
+                    <div class="box-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Escolha uma Marca/Modelo</div>
+                                <div class="dropdown">
+                                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Marca/Modelo
+                                    </button>
+                                    <div class="dropdown-menu scrollable-menu" aria-labelledby="dropdownMenuButton">
+                                        <h6 class="dropdown-header">Chevrolet-GM</h6>
+                                        <a class="dropdown-item" href="/dashboard/cobalt">Cobalt</a>
+                                        <a class="dropdown-item" href="/dashboard/cruze_sedan">Cruze Sedan</a>
+                                        <a class="dropdown-item" href="/dashboard/onix">Onix</a>
+                                        <a class="dropdown-item" href="/dashboard/prisma">Prisma</a>
+                                        <a class="dropdown-item" href="/dashboard/s10">S10</a>
+                                        <a class="dropdown-item" href="/dashboard/spin">Spin</a>
+                                        <a class="dropdown-item" href="/dashboard/tracker">Tracker</a>
+                                        <div class="dropdown-divider"></div>
+                                        <h6 class="dropdown-header">Fiat</h6>
+                                        <a class="dropdown-item" href="/dashboard/argo">Argo</a>
+                                        <a class="dropdown-item" href="/dashboard/cronos">Cronos</a>
+                                        <a class="dropdown-item" href="/dashboard/mobi">Mobi</a>
+                                        <a class="dropdown-item" href="/dashboard/siena">Siena</a>
+                                        <a class="dropdown-item" href="/dashboard/strada">Strada</a>
+                                        <a class="dropdown-item" href="/dashboard/toro">Toro</a>
+                                        <a class="dropdown-item" href="/dashboard/uno">Uno</a>
+                                        <div class="dropdown-divider"></div>
+                                        <h6 class="dropdown-header">Ford</h6>
+                                        <a class="dropdown-item" href="/dashboard/ecosport">Ecosport</a>
+                                        <a class="dropdown-item" href="/dashboard/fiesta">Fiesta</a>
+                                        <a class="dropdown-item" href="/dashboard/focus">Focus</a>
+                                        <a class="dropdown-item" href="/dashboard/fusion">Fusion</a>
+                                        <a class="dropdown-item" href="/dashboard/ka">Ka</a>
+                                        <a class="dropdown-item" href="/dashboard/ka_sedan">Ka Sedan</a>
+                                        <a class="dropdown-item" href="/dashboard/ranger">Ranger</a>
+                                        <div class="dropdown-divider"></div>
+                                        <h6 class="dropdown-header">Honda</h6>
+                                        <a class="dropdown-item" href="/dashboard/city">City</a>
+                                        <a class="dropdown-item" href="/dashboard/civic">Civic</a>
+                                        <a class="dropdown-item" href="/dashboard/fit">Fit</a>
+                                        <a class="dropdown-item" href="/dashboard/hr-v">HR-V</a>
+                                        <a class="dropdown-item" href="/dashboard/wr-v">WR-V</a>
+                                        <div class="dropdown-divider"></div>
+                                        <h6 class="dropdown-header">Hiunday</h6>
+                                        <a class="dropdown-item" href="/dashboard/creta">Creta</a>
+                                        <a class="dropdown-item" href="/dashboard/hb20">HB20</a>
+                                        <a class="dropdown-item" href="/dashboard/hb20s">HB20S</a>
+                                        <div class="dropdown-divider"></div>
+                                        <h6 class="dropdown-header">Jeep</h6>
+                                        <a class="dropdown-item" href="/dashboard/compass">Compass</a>
+                                        <a class="dropdown-item" href="/dashboard/renegade">Renegade</a>
+                                        <div class="dropdown-divider"></div>
+                                        <h6 class="dropdown-header">Nissan</h6>
+                                        <a class="dropdown-item" href="/dashboard/kicks">Kicks</a>
+                                        <a class="dropdown-item" href="/dashboard/sentra">Sentra</a>
+                                        <a class="dropdown-item" href="/dashboard/versa">Versa</a>
+                                        <div class="dropdown-divider"></div>
+                                        <h6 class="dropdown-header">Renault</h6>
+                                        <a class="dropdown-item" href="/dashboard/captur">Captur</a>
+                                        <a class="dropdown-item" href="/dashboard/duster">Duster</a>
+                                        <a class="dropdown-item" href="/dashboard/kwid">Kwid</a>
+                                        <a class="dropdown-item" href="/dashboard/logan">Logan</a>
+                                        <a class="dropdown-item" href="/dashboard/sandero">Sandero</a>
+                                        <div class="dropdown-divider"></div>
+                                        <h6 class="dropdown-header">Toyota</h6>
+                                        <a class="dropdown-item" href="/dashboard/corolla">Corolla</a>
+                                        <a class="dropdown-item" href="/dashboard/etios_hatch">Etios Hatch</a>
+                                        <a class="dropdown-item" href="/dashboard/etios_sedan">Etios Sedan</a>
+                                        <a class="dropdown-item" href="/dashboard/hilux">Hilux</a>
+                                        <a class="dropdown-item" href="/dashboard/yaris_hatch">Yaris Hatch</a>
+                                        <a class="dropdown-item" href="/dashboard/yaris_sedan">Yaris Sedan</a>
+                                        <div class="dropdown-divider"></div>
+                                        <h6 class="dropdown-header">VW</h6>
+                                        <a class="dropdown-item" href="/dashboard/amarok">Amarok</a>
+                                        <a class="dropdown-item" href="/dashboard/fox">Fox/Cross Fox</a>
+                                        <a class="dropdown-item" href="/dashboard/gol">Gol</a>
+                                        <a class="dropdown-item" href="/dashboard/golf">Golf</a>
+                                        <a class="dropdown-item" href="/dashboard/jetta">Jetta</a>
+                                        <a class="dropdown-item" href="/dashboard/polo">Polo</a>
+                                        <a class="dropdown-item" href="/dashboard/saveiro">Saveiro</a>
+                                        <a class="dropdown-item" href="/dashboard/up">Up</a>
+                                        <a class="dropdown-item" href="/dashboard/virtus">Virtus</a>
+                                        <a class="dropdown-item" href="/dashboard/voyage">Voyage</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <!-- End of Content Wrapper -->
 
-        <!-- Footer -->
-        <footer class="sticky-footer bg-gray-900 text-light fixed-bottom">
-            <!-- Footer Links -->
-            <div class="container-fluid text-center text-md-left">
-                <!-- Grid row -->
+        <br>
+
+        <!--<h3 class="h6 mb-2 text-gray-800">Filtros</h3>-->
+
+        <div class="box border-left-primary shadow h-100 py-2">
+            <div class="box-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Refine sua busca</div>
+                        <div class="h5 mb-2 font-weight-bold text-gray-800">Filtros</div>
+                        <form method='GET' name='filtro' action='?'>
+                            <div class="row">
+                                <div class="col mb-3">
+                                    <select class="form-control" name="ano_min" placeholder="ano min">
+                                        <option value="">Ano Min</option>
+                                        <option value="2019">2019</option>
+                                        <option value="2018">2018</option>
+                                        <option value="2017">2017</option>
+                                        <option value="2016">2016</option>
+                                        <option value="2015">2015</option>
+                                        <option value="2014">2014</option>
+                                        <option value="2013">2013</option>
+                                        <option value="2012">2012</option>
+                                        <option value="2011">2011</option>
+                                        <option value="2010">2010</option>
+                                        <option value="2009">2009</option>
+                                        <option value="2008">2008</option>
+                                        <option value="2007">2007</option>
+                                        <option value="2006">2006</option>
+                                        <option value="2005">2005</option>
+                                        <option value="2004">2004</option>
+                                        <option value="2003">2003</option>
+                                        <option value="2002">2002</option>
+                                        <option value="2001">2001</option>
+                                        <option value="2000">2000</option>
+                                    </select>
+                                </div>
+                                <div class="col mb-3">
+                                    <select class="form-control" name="ano_max" placeholder="ano max">
+                                        <option value="">Ano Max</option>
+                                        <option value="2019">2019</option>
+                                        <option value="2018">2018</option>
+                                        <option value="2017">2017</option>
+                                        <option value="2016">2016</option>
+                                        <option value="2015">2015</option>
+                                        <option value="2014">2014</option>
+                                        <option value="2013">2013</option>
+                                        <option value="2012">2012</option>
+                                        <option value="2011">2011</option>
+                                        <option value="2010">2010</option>
+                                        <option value="2009">2009</option>
+                                        <option value="2008">2008</option>
+                                        <option value="2007">2007</option>
+                                        <option value="2006">2006</option>
+                                        <option value="2005">2005</option>
+                                        <option value="2004">2004</option>
+                                        <option value="2003">2003</option>
+                                        <option value="2002">2002</option>
+                                        <option value="2001">2001</option>
+                                        <option value="2000">2000</option>
+                                    </select>
+                                </div>
+                                <div class="col mb-3">
+                                    <input class="form-control" name="preco_min" placeholder="Preço Min">
+                                </div>
+                                <div class="col mb-3">
+                                    <input class="form-control" name="preco_max" placeholder="Preço Max">
+                                </div>
+                                <div class="col mb-3">
+                                    <select class="form-control" name="km_min" placeholder="km min">
+                                        <option value="">Km Min</option>
+                                        <option value="0">0</option>
+                                        <option value="5000">5.000</option>
+                                        <option value="10000">10.000</option>
+                                        <option value="20000">20.000</option>
+                                        <option value="30000">30.000</option>
+                                        <option value="40000">40.000</option>
+                                        <option value="50000">50.000</option>
+                                        <option value="75000">75.000</option>
+                                        <option value="100000">100.000</option>
+                                        <option value="150000">150.000</option>
+                                        <option value="200000">200.000</option>
+                                        <option value="300000">300.000</option>
+                                        <option value="400000">400.000</option>
+                                        <option value="500000">500.000</option>
+                                    </select>
+                                </div>
+                                <div class="col mb-3">
+                                    <select class="form-control" name="km_max" placeholder="km max">
+                                        <option value="">Km Max</option>
+                                        <option value="0">0</option>
+                                        <option value="5000">5.000</option>
+                                        <option value="10000">10.000</option>
+                                        <option value="20000">20.000</option>
+                                        <option value="30000">30.000</option>
+                                        <option value="40000">40.000</option>
+                                        <option value="50000">50.000</option>
+                                        <option value="75000">75.000</option>
+                                        <option value="100000">100.000</option>
+                                        <option value="150000">150.000</option>
+                                        <option value="200000">200.000</option>
+                                        <option value="300000">300.000</option>
+                                        <option value="400000">400.000</option>
+                                        <option value="500000">500.000</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-outline-primary">Filtrar</button>
+                            <a href="/dashboard"><button type="button" class="btn btn-outline-primary">Resetar</button></a>
+                        </form>
+                    </div>
+                    <div class="col-auto">
+                        <!--<i class="fas fa-chevron-circle-right fa-2x text-gray-500"></i>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br>
+
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
                 <div class="row">
-                    <!-- Grid column -->
-                    <div class="col-md-6 mt-md-0 mt-3">
-                        <!-- Content -->
-                        <h5 class="text-uppercase">Radar do Carro</h5>
-                        <p>Here you can use rows and columns here to organize your footer content.</p>
-                    </div>
-                    <!-- Grid column -->
-                    <hr class="clearfix w-100 d-md-none pb-3">
-                    <!-- Grid column -->
-                    <div class="col-md-3 mb-md-0 mb-3">
-                        <!-- Links -->
-                        <h5 class="text-uppercase">Links Úteis</h5>
-                        <ul class="list-unstyled">
-                            <li>
-                                <a class="text-light" href="#!">Como Utilizar o Radar do Carro</a>
-                            </li>
-                            <li>
-                                <a class="text-light" href="#!">FAQ</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- Grid column -->
-
-                    <!-- Grid column -->
-                    <div class="col-md-3 mb-md-0 mb-3">
-
-                        <!-- Links -->
-                        <h5 class="text-uppercase"> <br> </h5>
-
-                        <ul class="list-unstyled">
-                            <li>
-                                <a class="text-light" href="#!">Como Utilizar o Radar do Carro</a>
-                            </li>
-                            <li>
-                                <a class="text-light" href="#!">FAQ</a>
-                            </li>
-                        </ul>
-
-                    </div>
-                    <!-- Grid column -->
-
+                    <h6 class="ml-3 mr-2 mt-1 font-weight-bold text-primary">Carros no Seu Radar:<h6>
+                        <h6 class="mt-1 font-weight-bold text-gray-800">{{ page }}</</h6>
                 </div>
-                <!-- Grid row -->
             </div>
-            <div class="copyright text-center bg-black">
-                Copyright &copy; 2019
-                <span>Radar do Carro</span>
-            </div>
-        </footer>
-        <!-- End of Footer -->
-
-    </div>
-    <!-- End of Page Wrapper -->
-
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Já Vai?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Clique no botão Logout abaixo para finalizar sua sessão.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <tbody>
+                            {% render_table table %}
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
+
     </div>
-
-    <!-- Bootstrap core JavaScript-->
-    <script src="{%static 'vendor/jquery/jquery.min.js' %}"></script>
-    <script src="{%static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="{%static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="{%static 'js/sb-admin-2.min.js' %}"></script>
-
-    <!-- Page level plugins -->
-    <script src="{%static 'vendor/datatables/jquery.dataTables.min.js' %}"></script>
-    <script src="{%static 'vendor/datatables/dataTables.bootstrap4.min.js' %}"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="{%static 'js/demo/datatables-demo.js' %}"></script>
-
+    <!-- /.container-fluid -->
+    {% endblock %}
 </body>
-
 </html>
