@@ -9415,6 +9415,7 @@ form.user .custom-checkbox.small label {
     line-height: 1.5rem;
 }
 form.user .form-control-user {
+    width: 50%;
     font-size: .8rem;
     border-radius: 10rem;
     padding: 1.5rem 1rem;
