@@ -64,6 +64,8 @@ body {
     outline: 0!important;
 }
 hr {
+    width: 75%;
+    min-width: 200px;
     -webkit-box-sizing: content-box;
     box-sizing: content-box;
     height: 0;
@@ -9416,6 +9418,7 @@ form.user .custom-checkbox.small label {
 }
 form.user .form-control-user {
     width: 50%;
+    min-width: 200px;
     font-size: .8rem;
     border-radius: 10rem;
     padding: 1.5rem 1rem;

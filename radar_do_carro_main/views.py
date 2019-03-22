@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
 from django_tables2 import RequestConfig
 from django.contrib.auth.decorators import login_required, permission_required
-from django.contrib.auth.forms import UserCreationForm
+
+from .forms import RegistrationForm
 
 from radar_do_carro_main.models import CarAdTest
 from radar_do_carro_main.tables import CarAdTestTable
@@ -20,12 +21,12 @@ def index(request):
 def criar_conta(request):
     """ Register new user accounts """
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = RegistrationForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('dashboard')
     else:
-        form = UserCreationForm()
+        form = RegistrationForm()
         args = {'form': form}
 
         return render(request, 'radar_do_carro_main/criar_conta.html', args)
