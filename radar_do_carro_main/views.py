@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
 from django_tables2 import RequestConfig
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
+from django.contrib.auth.forms import UserCreationForm
 
 from radar_do_carro_main.models import CarAdTest
 from radar_do_carro_main.tables import CarAdTestTable
@@ -12,16 +13,37 @@ from .filters import CarAdTestFilter
 
 
 def index(request):
+    """ Home page render """
     return render(request, 'radar_do_carro_main/index.html')
+
+
+def criar_conta(request):
+    """ Register new user accounts """
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('dashboard')
+    else:
+        form = UserCreationForm()
+        args = {'form': form}
+
+        return render(request, 'radar_do_carro_main/criar_conta.html', args)
+
 
 @login_required(login_url='/login/')
 def logout_view(request):
+    """ Logout the user """
     logout(request)
     return redirect('index')
 
+
+# Add a decorator for permission required as well
+# from django.contrib.auth.decorators import permission_required
+# @permission_required('radar_do_carro_main.assinatura_valida')
 @login_required(login_url='/login/')
 def dashboard(request, marca_modelo='todos'):
-    """  """
+    """ Fetch, filter and sort table to be displayed in the dashboard """
     categorias_disponiveis = [
         'todos', 'mais_vendidos', 'seda_compacto', 'seda_medio', 'suv'
     ]

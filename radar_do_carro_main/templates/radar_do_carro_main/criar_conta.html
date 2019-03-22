@@ -32,31 +32,20 @@
                                 <form class="user text-center" method="post">
                                     {% csrf_token %}
                                     Faça seu login
-                                    <br> <br>
-                                    {% if form.errors %}
-                                    Falha no login
-                                    <br>
-                                    Por favor, insira nome de usuário e senha válidos.
-                                    <br> <br>
-                                    {% endif %}
                                     <div class="container text-center">
-                                        <input class="form-control form-control-user mx-auto  my-1" type="text" name="username" placeholder="usuário" required oninvalid="this.setCustomValidity('Por favor, digite um nome de usuário')" oninput="setCustomValidity('')">
-                                        <input class="form-control form-control-user mx-auto  my-1" type="password" name="password" placeholder="senha" required oninvalid="this.setCustomValidity('Por favor, digite sua senha')" oninput="setCustomValidity('')">
-                                    </div>
-
-                                    <div class="container">
-                                        <button class="btn bg-primary text-white mt-4">Entrar</button>
-                                    </div>
-                                    <div class="text-center mt-2 p-t-90">
-                                        <a href="recuperar_senha/">
-                                            Esqueceu a senha?
-                                        </a>
+                                        <input class="form-control form-control-user mx-auto my-1" type="text" name="username" placeholder="usuário" required oninvalid="this.setCustomValidity('Por favor, digite um nome de usuário')" oninput="setCustomValidity('')">
+                                        <input class="form-control form-control-user mx-auto my-1" type="password" name="password1" placeholder="senha" required oninvalid="this.setCustomValidity('Por favor, digite sua senha')" oninput="setCustomValidity('')">
+                                        <input class="form-control form-control-user mx-auto my-1" type="password" name="password2" placeholder="senha" required oninvalid="this.setCustomValidity('Por favor, digite sua senha')" oninput="setCustomValidity('')">
+                                        <div class="container">
+                                            <button type="submit" class="btn bg-primary text-white mt-4">Criar Conta</button>
+                                        </div>
                                     </div>
                                 </form>
                                 <hr>
                                 <div class="container text-center mt-2">
-                                    <a href="/criar_conta">
-                                        <button class="btn bg-secondary text-white">Criar Conta</button>
+                                    <p class="text-dark">Já tem uma conta no Radar do Carro?</p>
+                                    <a href="/login">
+                                        <button class="btn bg-secondary text-white">Login</button>
                                     </a>
                                 </div>
                             </div>
