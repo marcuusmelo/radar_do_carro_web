@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load render_table from django_tables2 %}
+{% load bootstrap3 %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    {% block head %}
+    {% endblock %}
+</head>
+<body>
+    {% block body %}
+    <!-- Masthead -->
+    <header class="masthead text-white text-center">
+        <div class="overlay"></div>
+        <div class="container">
+
+            <!-- Outer Row -->
+            <div class="row justify-content-center">
+
+                <div class="col-xl-10 col-lg-12 col-md-9">
+
+                    <div class="card o-hidden border-0 shadow-lg">
+                        <div class="card-body text-center p-0">
+                            <!-- Nested Row within Card Body -->
+                            <div class="p-5">
+                                <div class="text-center">
+                                    <img src="{% static 'img/car3_black.png' %}" alt="" width="120" height="100"></img>
+                                    <h1 class="h4 text-gray-900 my-5">Ative Sua Conta</h1>
+                                    <h6 class="h5 text-gray-900 my-5">Acesse seu email e clique no link que acabamos de te enviar para ativar sua conta.</h6>
+                                </div>
+                                <br>
+                                <p class="text-dark my-5">Você poderá escolher o plano e fazer o pagameno após a confirmação do seu e-mail.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    {% endblock %}
+    {% block foot %}
+    {% endblock %}
+</body>
+</html>

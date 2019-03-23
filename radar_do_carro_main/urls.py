@@ -6,6 +6,7 @@ from . import views
 urlpatterns = [
     path('', views.index, name='index'),
     path('criar_conta', views.criar_conta, name='criar_conta'),
+    path(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$', views.activate, name='activate'),
     path('login/', auth_views.LoginView.as_view(template_name='radar_do_carro_main/login.html')),
     path('logout/', views.logout_view),
     re_path(r'^dashboard/$', views.dashboard, name='dashboard'),
