@@ -1,13 +1,10 @@
 {% autoescape off %}
-Olá {{ user.username }},
+Olá {{ user.first_name }},
 
 Muito bom ver que você acabou de criar sua conta no Radar do Carro!
 
 Clique no link abaixo e confirme seu cadastro:
 http://{{ domain }}{% url 'activate' uidb64=uid token=token %}
-
-Esperamos que o Radar do Carro te ajude a encontrar o carro ideal para você!
-Estamos à disposição para o que precisar.
 
 Atenciosamente,
 
