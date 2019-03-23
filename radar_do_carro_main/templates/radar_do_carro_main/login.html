@@ -29,14 +29,15 @@
                                     <img src="{% static 'img/car3_black.png' %}" alt="" width="120" height="100"></img>
                                     <h1 class="h4 text-gray-900 mb-2">Bem-Vindo(a) de Volta!</h1>
                                 </div>
-                                <form class="user text-center" method="post">
+                                <form class="user text-center text-dark" method="post">
                                     {% csrf_token %}
-                                    Faça seu login
-                                    <br> <br>
                                     {% if form.errors %}
                                     Falha no login
                                     <br>
                                     Por favor, insira nome de usuário e senha válidos.
+                                    <br> <br>
+                                    {% else %}
+                                    Faça seu login
                                     <br> <br>
                                     {% endif %}
                                     <div class="container text-center">
