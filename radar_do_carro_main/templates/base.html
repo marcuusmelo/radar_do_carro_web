@@ -54,20 +54,17 @@
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
-
+                        {% if user.is_authenticated %}
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link" href="/dashboard">
                                 <span class="mr-2 d-none d-lg-inline text-light-600 small">Dashboard</span>
-                                <i class="fas fa-tachometer-alt fa-sm fa-fw mr-2 text-light"></i>
                             </a>
                         </li>
-
                         <div class="topbar-divider d-none d-sm-block"></div>
-
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-light-600 small">User Name</span>
+                                <span class="mr-2 d-none d-lg-inline text-light-600 small">{{ user.first_name }}</span>
                                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                             </a>
                             <!-- Dropdown - User Information -->
@@ -76,15 +73,24 @@
                                     <i class="fas fa-address-card fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Perfil
                                 </a>
-                                <a class="dropdown-item" href="/configuracoes">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Configurações
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/#sobre">
+                                    <i class="fas fa-info-circle fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Saiba Mais
+                                </a>
+                                <a class="dropdown-item" href="/#planos">
+                                    <i class="fas fa-file-invoice-dollar fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Planos
+                                </a>
+                                <a class="dropdown-item" href="/como_usar">
+                                    <i class="fas fa-book fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Como Usar
+                                </a>
+                                <a class="dropdown-item" href="/FAQ">
+                                    <i class="fas fa-question-circle fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    FAQ
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="/como_utilizar_o_radar_do_carro">
-                                    <i class="fas fa-book fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Como Utilizar o Radar do Carro
-                                </a>
                                 <a class="dropdown-item" href="/dicas_para_comprar_um_carro">
                                     <i class="fas fa-lightbulb fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Dicas Para Comprar Um Carro
@@ -94,17 +100,13 @@
                                     Dicas Para Vender Um Carro
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="/sobre" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" href="/quem_somos">
                                     <i class="fas fa-users fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Sobre o Radar do Carro
+                                    Quem Somos
                                 </a>
-                                <a class="dropdown-item" href="/contato" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" href="/contato">
                                     <i class="fas fa-phone fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Contato
-                                </a>
-                                <a class="dropdown-item" href="/FAQ" data-toggle="modal" data-target="#logoutModal">
-                                    <i class="fas fa-question-circle fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    FAQ
                                 </a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="/logout" data-toggle="modal" data-target="#logoutModal">
@@ -113,6 +115,60 @@
                                 </a>
                             </div>
                         </li>
+                        {% else %}
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-light-600 small">Sobre</span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="/#sobre">
+                                    <i class="fas fa-info-circle fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Saiba Mais
+                                </a>
+                                <a class="dropdown-item" href="/#planos">
+                                    <i class="fas fa-file-invoice-dollar fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Planos
+                                </a>
+                                <a class="dropdown-item" href="/como_usar">
+                                    <i class="fas fa-book fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Como Usar
+                                </a>
+                                <a class="dropdown-item" href="/FAQ">
+                                    <i class="fas fa-question-circle fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    FAQ
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/dicas_para_comprar_um_carro">
+                                    <i class="fas fa-lightbulb fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Dicas Para Comprar Um Carro
+                                </a>
+                                <a class="dropdown-item" href="/dicas_para_vender_um_carro">
+                                    <i class="fas fa-lightbulb fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Dicas Para Vender Um Carro
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/quem_somos">
+                                    <i class="fas fa-users fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Quem Somos
+                                </a>
+                                <a class="dropdown-item" href="/contato" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-phone fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Contato
+                                </a>
+                            </div>
+                        </li>
+                        <div class="topbar-divider d-none d-sm-block"></div>
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link" href="/login">
+                                <span class="mr-2 d-none d-lg-inline text-light-600 small">Login</span>
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link" href="/criar_conta">
+                                <span class="mr-2 d-none d-lg-inline text-light-600 small">Criar Conta</span>
+                            </a>
+                        </li>
+                        {% endif %}
 
                     </ul>
 
