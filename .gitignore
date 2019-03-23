@@ -1,3 +1,4 @@
 *.DS_Store
 *__pycache__*
  radar_do_carro_main/__pycache__*
+*.pyc
