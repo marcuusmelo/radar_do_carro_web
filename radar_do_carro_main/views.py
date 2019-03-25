@@ -93,6 +93,7 @@ def dashboard(request, marca_modelo='todos'):
     categorias_disponiveis = [
         'todos', 'mais_vendidos', 'seda_compacto', 'seda_medio', 'suv'
     ]
+
     modelos_disponiveis = [
         'cobalt', 'cruze_sedan', 'onix', 'prisma', 's10', 'spin', 'tracker', 'argo', 'cronos',
         'mobi', 'siena', 'strada', 'toro', 'uno', 'ecosport', 'fiesta', 'focus', 'fusion', 'ka',
@@ -102,6 +103,14 @@ def dashboard(request, marca_modelo='todos'):
         'amarok', 'fox', 'gol', 'golf', 'jetta', 'polo', 'saveiro', 'up', 'virtus', 'voyage'
     ]
 
+    mais_vendidos = ['onix', 'hb20', 'ka', 'gol', 'kwid']
+
+    seda_compacto = ['prisma', 'virtus', 'ka_sedan', 'voyage', 'hb20s']
+
+    seda_medio = ['corolla', 'civic', 'cruze_sedan', 'sentra', 'jetta']
+
+    suv = ['compass', 'creta', 'hr-v', 'kicks', 'renegade']
+
     if marca_modelo not in modelos_disponiveis+categorias_disponiveis:
         return render(request, 'radar_do_carro_main/404.html')
 
@@ -110,15 +119,15 @@ def dashboard(request, marca_modelo='todos'):
     if marca_modelo == 'todos':
         pass
     elif marca_modelo == 'mais_vendidos':
-        pass
+        car_ads_qs = car_ads_qs.filter(modelo__in=mais_vendidos)
     elif marca_modelo == 'seda_compacto':
-        pass
+        car_ads_qs = car_ads_qs.filter(modelo__in=seda_compacto)
     elif marca_modelo == 'seda_medio':
-        pass
+        car_ads_qs = car_ads_qs.filter(modelo__in=seda_medio)
     elif marca_modelo == 'suv':
-        pass
+        car_ads_qs = car_ads_qs.filter(modelo__in=suv)
     else:
-        pass
+        car_ads_qs = car_ads_qs.filter(modelo__exact=marca_modelo)
 
     if "ano_min" in request.GET:
         ano_min = request.GET["ano_min"]
