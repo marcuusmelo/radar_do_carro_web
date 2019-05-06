@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 import os
 import dj_database_url
 import django_heroku
+from mongoengine import *
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -45,6 +46,7 @@ INSTALLED_APPS = [
     'django_filters',
     'bootstrapform',
     'bootstrap3',
+    'django_mongoengine',
 ]
 
 MIDDLEWARE = [
@@ -88,8 +90,19 @@ WSGI_APPLICATION = 'radar_do_carro_web.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'djongo',
+        'NAME': 'heroku_n7zq8f93',
+        'HOST': 'mongodb://marcuusmelo:Kb915597@ds127983.mlab.com:27983/heroku_n7zq8f93'
+    }
+}
+
+MONGODB_DATABASES = {
+    'default': {
+        'NAME': 'heroku_n7zq8f93',
+        'USERNAME': 'marcuusmelo',
+        'PASSWORD': 'Kb915597',
+        'HOST': 'mongodb://ds127983.mlab.com',
+        'PORT': 27983,
     }
 }
 

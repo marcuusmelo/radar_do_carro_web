@@ -1,0 +1,225 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load render_table from django_tables2 %}
+{% load bootstrap3 %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    {% block head %}
+    {% endblock %}
+</head>
+<body>
+    {% block body %}
+    <!-- Begin Page Content -->
+    <div class="container-fluid mt-4">
+
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-primary">Fipe</h1>
+
+        <br>
+
+        <!-- Content Row -->
+        <div class="row">
+            <!-- Cards de Busca Rápida -->
+            <!-- Link carros mais vedidos: https://revistaautoesporte.globo.com/Noticias/noticia/2019/01/top-50-os-carros-mais-vendidos-de-2018.html-->
+            <!-- Link carros mais vedidos por categoria: https://revistaautoesporte.globo.com/Noticias/noticia/2019/01/os-carros-mais-vendidos-de-2018.html-->
+
+            <div class="col-3 mb-4">
+                <div class="box border-left-primary shadow h-100 py-2">
+                    <div class="box-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Escolha uma Marca/Modelo</div>
+                                <div class="dropdown my-1">
+                                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Marca/Modelo
+                                    </button>
+                                    <div class="dropdown-menu scrollable-menu" aria-labelledby="dropdownMenuButton">
+                                        <h6 class="dropdown-header">Chevrolet-GM</h6>
+                                        <a class="dropdown-item" href="/fipe/cobalt">Cobalt</a>
+                                        <a class="dropdown-item" href="/fipe/cruze_sedan">Cruze Sedan</a>
+                                        <a class="dropdown-item" href="/fipe/onix">Onix</a>
+                                        <a class="dropdown-item" href="/fipe/prisma">Prisma</a>
+                                        <a class="dropdown-item" href="/fipe/s10">S10</a>
+                                        <a class="dropdown-item" href="/fipe/spin">Spin</a>
+                                        <a class="dropdown-item" href="/fipe/tracker">Tracker</a>
+                                        <div class="dropdown-divider"></div>
+                                        <h6 class="dropdown-header">Fiat</h6>
+                                        <a class="dropdown-item" href="/fipe/argo">Argo</a>
+                                        <a class="dropdown-item" href="/fipe/cronos">Cronos</a>
+                                        <a class="dropdown-item" href="/fipe/mobi">Mobi</a>
+                                        <a class="dropdown-item" href="/fipe/siena">Siena</a>
+                                        <a class="dropdown-item" href="/fipe/strada">Strada</a>
+                                        <a class="dropdown-item" href="/fipe/toro">Toro</a>
+                                        <a class="dropdown-item" href="/fipe/uno">Uno</a>
+                                        <div class="dropdown-divider"></div>
+                                        <h6 class="dropdown-header">Ford</h6>
+                                        <a class="dropdown-item" href="/fipe/ecosport">Ecosport</a>
+                                        <a class="dropdown-item" href="/fipe/fiesta">Fiesta</a>
+                                        <a class="dropdown-item" href="/fipe/focus">Focus</a>
+                                        <a class="dropdown-item" href="/fipe/fusion">Fusion</a>
+                                        <a class="dropdown-item" href="/fipe/ka">Ka</a>
+                                        <a class="dropdown-item" href="/fipe/ka_sedan">Ka Sedan</a>
+                                        <a class="dropdown-item" href="/fipe/ranger">Ranger</a>
+                                        <div class="dropdown-divider"></div>
+                                        <h6 class="dropdown-header">Honda</h6>
+                                        <a class="dropdown-item" href="/fipe/city">City</a>
+                                        <a class="dropdown-item" href="/fipe/civic">Civic</a>
+                                        <a class="dropdown-item" href="/fipe/fit">Fit</a>
+                                        <a class="dropdown-item" href="/fipe/hr-v">HR-V</a>
+                                        <a class="dropdown-item" href="/fipe/wr-v">WR-V</a>
+                                        <div class="dropdown-divider"></div>
+                                        <h6 class="dropdown-header">Hiunday</h6>
+                                        <a class="dropdown-item" href="/fipe/creta">Creta</a>
+                                        <a class="dropdown-item" href="/fipe/hb20">HB20</a>
+                                        <a class="dropdown-item" href="/fipe/hb20s">HB20S</a>
+                                        <div class="dropdown-divider"></div>
+                                        <h6 class="dropdown-header">Jeep</h6>
+                                        <a class="dropdown-item" href="/fipe/compass">Compass</a>
+                                        <a class="dropdown-item" href="/fipe/renegade">Renegade</a>
+                                        <div class="dropdown-divider"></div>
+                                        <h6 class="dropdown-header">Nissan</h6>
+                                        <a class="dropdown-item" href="/fipe/kicks">Kicks</a>
+                                        <a class="dropdown-item" href="/fipe/sentra">Sentra</a>
+                                        <a class="dropdown-item" href="/fipe/versa">Versa</a>
+                                        <div class="dropdown-divider"></div>
+                                        <h6 class="dropdown-header">Renault</h6>
+                                        <a class="dropdown-item" href="/fipe/captur">Captur</a>
+                                        <a class="dropdown-item" href="/fipe/duster">Duster</a>
+                                        <a class="dropdown-item" href="/fipe/kwid">Kwid</a>
+                                        <a class="dropdown-item" href="/fipe/logan">Logan</a>
+                                        <a class="dropdown-item" href="/fipe/sandero">Sandero</a>
+                                        <div class="dropdown-divider"></div>
+                                        <h6 class="dropdown-header">Toyota</h6>
+                                        <a class="dropdown-item" href="/fipe/corolla">Corolla</a>
+                                        <a class="dropdown-item" href="/fipe/etios_hatch">Etios Hatch</a>
+                                        <a class="dropdown-item" href="/fipe/etios_sedan">Etios Sedan</a>
+                                        <a class="dropdown-item" href="/fipe/hilux">Hilux</a>
+                                        <a class="dropdown-item" href="/fipe/yaris_hatch">Yaris Hatch</a>
+                                        <a class="dropdown-item" href="/fipe/yaris_sedan">Yaris Sedan</a>
+                                        <div class="dropdown-divider"></div>
+                                        <h6 class="dropdown-header">VW</h6>
+                                        <a class="dropdown-item" href="/fipe/amarok">Amarok</a>
+                                        <a class="dropdown-item" href="/fipe/fox">Fox/Cross Fox</a>
+                                        <a class="dropdown-item" href="/fipe/gol">Gol</a>
+                                        <a class="dropdown-item" href="/fipe/golf">Golf</a>
+                                        <a class="dropdown-item" href="/fipe/jetta">Jetta</a>
+                                        <a class="dropdown-item" href="/fipe/polo">Polo</a>
+                                        <a class="dropdown-item" href="/fipe/saveiro">Saveiro</a>
+                                        <a class="dropdown-item" href="/fipe/up">Up</a>
+                                        <a class="dropdown-item" href="/fipe/virtus">Virtus</a>
+                                        <a class="dropdown-item" href="/fipe/voyage">Voyage</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-4">
+                <div class="box border-left-primary shadow h-100 py-2">
+                    <div class="box-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Refine sua busca</div>
+                                <form method='GET' name='filtro' action='?'>
+                                    <div class="row">
+                                        <div class="col mb-3">
+                                            <select class="form-control" name="ano" placeholder="ano">
+                                                <option value="">Ano</option>
+                                                <option value="ZERO KM">ZERO KM</option>
+                                                <option value="2019">2019</option>
+                                                <option value="2018">2018</option>
+                                                <option value="2017">2017</option>
+                                                <option value="2016">2016</option>
+                                                <option value="2015">2015</option>
+                                                <option value="2014">2014</option>
+                                                <option value="2013">2013</option>
+                                                <option value="2012">2012</option>
+                                                <option value="2011">2011</option>
+                                                <option value="2010">2010</option>
+                                                <option value="2009">2009</option>
+                                                <option value="2008">2008</option>
+                                                <option value="2007">2007</option>
+                                                <option value="2006">2006</option>
+                                                <option value="2005">2005</option>
+                                                <option value="2004">2004</option>
+                                                <option value="2003">2003</option>
+                                                <option value="2002">2002</option>
+                                                <option value="2001">2001</option>
+                                                <option value="2000">2000</option>
+                                            </select>
+                                        </div>
+                                        <div class="col mb-3">
+                                            <select class="form-control" name="pot" placeholder="Potência">
+                                                <option value="">Potência</option>
+                                                <option value="1.0">1.0</option>
+                                                <option value="1.3">1.3</option>
+                                                <option value="1.4">1.4</option>
+                                                <option value="1.5">1.5</option>
+                                                <option value="1.6">1.6</option>
+                                                <option value="1.7">1.7</option>
+                                                <option value="1.8">1.8</option>
+                                                <option value="2.0">2.0</option>
+                                                <option value="2.2">2.2</option>
+                                                <option value="2.3">2.3</option>
+                                                <option value="2.4">2.4</option>
+                                                <option value="2.5">2.5</option>
+                                                <option value="2.8">2.8</option>
+                                                <option value="3.0">3.0</option>
+                                                <option value="3.2">3.2</option>
+                                                <option value="4.0">4.0</option>
+                                            </select>
+                                        </div>
+                                        <div class="col mb-3">
+                                            <select class="form-control" name="transm" placeholder="Transmissão">
+                                                <option value="">Transmissão</option>
+                                                <option value="MEC">Mecânico</option>
+                                                <option value="AUT">Automático</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-outline-primary">Filtrar</button>
+                                    <a href="/dashboard"><button type="button" class="btn btn-outline-primary">Resetar</button></a>
+                                </form>
+                            </div>
+                            <div class="col-auto">
+                                <!--<i class="fas fa-chevron-circle-right fa-2x text-gray-500"></i>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br>
+
+        <!--<h3 class="h6 mb-2 text-gray-800">Filtros</h3>-->
+
+        <br>
+
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <div class="row">
+                    <h6 class="ml-3 mr-2 mt-1 font-weight-bold text-primary">Carros no Seu Radar:<h6>
+                        <h6 class="mt-1 font-weight-bold text-gray-800">{{ page }}</</h6>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <tbody>
+                            {% render_table table %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container-fluid -->
+    {% endblock %}
+</body>
+</html>
