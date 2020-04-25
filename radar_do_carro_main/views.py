@@ -184,7 +184,7 @@ def dashboard(request, marca_modelo='todos'):
 # Add a decorator for permission required as well
 # from django.contrib.auth.decorators import permission_required
 # @permission_required('radar_do_carro_main.assinatura_valida')
-@login_required(login_url='/login/')
+#@login_required(login_url='/login/')
 def fipe(request, marca_modelo='todos'):
     """ Fetch, filter and sort table to be displayed in the dashboard """
     categorias_disponiveis = [
