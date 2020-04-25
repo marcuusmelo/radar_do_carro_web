@@ -2048,6 +2048,18 @@ textarea.form-control {
 a.btn.disabled, fieldset:disabled a.btn {
     pointer-events: none;
 }
+.btn-primary2 {
+    margin: 10px;
+    width: 50%;
+    color: #fff;
+    background-color: #4e73df;
+    border-color: #4e73df;
+}
+.btn-primary2:hover {
+    color: #fff;
+    background-color: #2e59d9;
+    border-color: #2653d4;
+}
 .btn-primary {
     margin: 10px;
     color: #fff;
